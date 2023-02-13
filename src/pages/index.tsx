@@ -14,7 +14,7 @@ export default function Home() {
         className="w-32 h-32 rounded-full"
       />
       {session ? (
-        <button onClick={() => signOut()} className="bg-blue-500">
+        <button onClick={() => signOut()} className="bg-blue-800">
           signOut
         </button>
       ) : (
