@@ -11,6 +11,8 @@ import zxcvbn from "zxcvbn";
 import validator from "validator";
 import SlideButton from "../buttons/SlideButton";
 import { toast } from "react-toastify";
+import { SubmitHandler } from "react-hook-form/dist/types/form";
+import axios from "axios";
 
 interface RegisterFormProps {}
 
@@ -37,7 +39,7 @@ const FormSchema = z
     confrimPassword: z.string(),
     accept: z.literal(true, {
       errorMap: () => ({
-        message: "Please agree to all terms and conditions  before continue",
+        message: "Please agree to all terms and conditions before continue",
       }),
     }),
   })
@@ -54,12 +56,23 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
   });
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit: SubmitHandler<FormSchemaType> = async (values) => {
+    try {
+      const { data } = await axios.post("/api/auth/signup", {
+        ...values,
+      });
+      reset();
+      toast.success(data.message);
+    } catch (error: Error | any) {
+      toast.error(error.response.data.message);
+    }
+  };
   const validatePasswordStrength = () => {
     let password = watch().password;
     return zxcvbn(password ? password : "").score;
@@ -187,9 +200,6 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
         icon={<FiLock />}
         disabled={isSubmitting}
       />
-      <button onClick={() => toast.success("this is a success message")}>
-        Toast
-      </button>
     </form>
   );
 };

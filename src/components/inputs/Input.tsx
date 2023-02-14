@@ -41,7 +41,6 @@ const Input: React.FC<InputProps> = (props) => {
             borderColor: `${error ? "#ED4337" : ""}`,
           }}
         />
-        {/* {show and hided password} */}
         {(name == "password" || name == "confrimPassword") && (
           <div
             className="absolute top-2.5 right-2 text-xl text-gray-700 cursor-pointer"

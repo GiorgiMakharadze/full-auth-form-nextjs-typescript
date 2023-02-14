@@ -1,7 +1,9 @@
 import type { AppProps } from "next/app";
+import Head from "next/head";
+
 import { SessionProvider } from "next-auth/react";
+import { ToastContainer } from "react-toastify";
 import "@/styles/globals.css";
-import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -10,21 +12,26 @@ export default function App({
   pageProps: { session, ...pageProps },
 }: AppProps) {
   return (
-    <SessionProvider session={session}>
-      <ToastContainer
-        position="top-left"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
-      <ToastContainer />
-      <Component {...pageProps} />
-    </SessionProvider>
+    <>
+      <Head>
+        <title>Authentification - Giorgi Makharadze</title>
+      </Head>
+      <SessionProvider session={session}>
+        <ToastContainer
+          position="top-left"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
+        <ToastContainer />
+        <Component {...pageProps} />
+      </SessionProvider>
+    </>
   );
 }

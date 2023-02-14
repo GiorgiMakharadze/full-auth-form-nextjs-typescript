@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
+mongoose.set("strictQuery", false);
 
 if (!process.env.DATABASE_URL) {
-  throw new Error("Please add the database utl in .env.local file");
+  throw new Error("Please add the databse url in .env file");
 }
 
 const DATABASE_URL: string = process.env.DATABASE_URL;
@@ -29,7 +30,7 @@ async function connectDb() {
     cached.promise = mongoose
       .connect(DATABASE_URL, options)
       .then((mongoose) => {
-        console.log("Conneection has been established.");
+        console.log("Connection has been established.");
         return mongoose;
       })
       .catch((error) => {
@@ -37,8 +38,7 @@ async function connectDb() {
       });
   }
   cached.conn = await cached.promise;
-  console.log(cached.conn);
+
   return cached.conn;
 }
-
 export default connectDb;
