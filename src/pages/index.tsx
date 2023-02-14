@@ -3,6 +3,7 @@ import { useSession, signIn, signOut, getSession } from "next-auth/react";
 
 export default function Home() {
   const { data: session } = useSession();
+  console.log(session);
 
   return (
     <>
@@ -13,6 +14,9 @@ export default function Home() {
         alt="img"
         className="w-32 h-32 rounded-full"
       />
+      <span>
+        Provider: <b>{session?.user?.provider}</b>
+      </span>
       {session ? (
         <button onClick={() => signOut()} className="bg-blue-800">
           signOut
