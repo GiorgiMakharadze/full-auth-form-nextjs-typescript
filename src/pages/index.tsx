@@ -56,9 +56,8 @@ export default function Home() {
                     <p className="mb-4 text-sm">{text1}</p>
                     <p className="font-bold text-xs">{text2}</p>
                     <div className="mt-6 flex items-center justify-center gap-2">
-                      Source code her : &nbsp;
+                      Source code here : &nbsp;
                       <Link href="">
-                        {" "}
                         <AiFillGithub />
                       </Link>
                     </div>
