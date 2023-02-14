@@ -1,10 +1,12 @@
-import NextAuth from "next-auth";
+import NextAuth, { Account, Profile, User } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 import FacebookProvider from "next-auth/providers/facebook";
 import GoogleProvider from "next-auth/providers/google";
 import DiscordProvider from "next-auth/providers/discord";
 import TwitterProvider from "next-auth/providers/twitter";
 import Auth0Provider from "next-auth/providers/auth0";
+import CredentialsProvider from "next-auth/providers/credentials";
+
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "@/lib/mongodb";
 import { JWT } from "next-auth/jwt";
@@ -56,7 +58,7 @@ export default NextAuth({
       user?: User | Adapter | undefined;
       account?: Account | null | undefined;
       profile?: Profile | undefined;
-      isNewUser?: boolean | undefuned;
+      isNewUser?: boolean | any;
     }) {
       if (user) {
         token.provider = account?.provider;
