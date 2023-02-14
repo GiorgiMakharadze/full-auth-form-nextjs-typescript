@@ -13,11 +13,12 @@ export default function Home() {
     "This is a full build that covers the full authentification process from login, Register, sending emails (for activating acount,reset password and password change notice), forgot password, reset password,advanced form validation,protected routes, session manipulation...";
   const text2: string =
     "In this build we used React js, Next js, Mongodb, Mongoose, Typecript, Next auth,React-hook-form, Zod,Axios, Nodemailer, Smtp service, Gmail stmp, Axios, React-toastify, Zxcvbn, Handlebars, BcryptJs...";
+
   return (
     <>
-      <div className="bg-black min-h-screen  text-white flex items-center justify-center">
-        <div className="mx-auto">
-          <div className="border border-white relative flex flex-com w-full rounded-lg">
+      <div className="home bg-black min-h-screen text-white flex items-center justify-center">
+        <div className="container mx-auto">
+          <div className="border border-white relative flex flex-col w-full rounded-lg">
             <div className="flex flex-wrap justify-center items-center">
               <div className="w-full text-right">
                 <div className="py-6 px-3">
@@ -44,66 +45,71 @@ export default function Home() {
                   {session?.user?.email}
                 </div>
                 <div className="mb-2 mt-10">
-                  You logged in usin &nbsp;
+                  You logged in using &nbsp;
                   <span className="capitalize bg-blue-400 text-white px-4 py-1 ml-2 font-bold italix text-lg rounded-md">
                     {session?.user?.provider}
                   </span>
                 </div>
               </div>
               <div className="mt-10 py-10 border-t text-center">
-                <div className="flex flex-wrap. justify-center">
+                <div className="flex flex-wrap justify-center">
                   <div className="w-full px-4">
                     <p className="mb-4 text-sm">{text1}</p>
                     <p className="font-bold text-xs">{text2}</p>
                     <div className="mt-6 flex items-center justify-center gap-2">
                       Source code here : &nbsp;
-                      <Link href="">
+                      <a
+                        href="http://"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-4xl"
+                      >
                         <AiFillGithub />
-                      </Link>
+                      </a>
                     </div>
                     <div className="flex justify-center gap-4  mt-4 pt-6 text-3xl ">
-                      <Link
+                      <a
                         href=""
                         target="_blank"
                         className="hover:scale-125 transition ease-in-out"
                       >
                         <AiFillGithub />
-                      </Link>
-                      <Link
+                      </a>
+                      <a
                         href=""
                         target="_blank"
                         className="hover:scale-125 transition ease-in-out"
                       >
                         <FaInstagram />
-                      </Link>
-                      <Link
+                      </a>
+                      <a
                         href=""
                         target="_blank"
                         className="hover:scale-125 transition ease-in-out"
                       >
                         <FaYoutube />
-                      </Link>
-                      <Link
+                      </a>
+                      <a
                         href=""
                         target="_blank"
                         className="hover:scale-125 transition ease-in-out"
                       >
                         <FaFacebook />
-                      </Link>
-                      <Link
+                      </a>
+                      <a
                         href=""
                         target="_blank"
                         className="hover:scale-125 transition ease-in-out"
                       >
                         <FaLinkedin />
-                      </Link>
-                      <Link
+                      </a>
+                      <a
                         href=""
                         target="_blank"
                         className="hover:scale-125 transition ease-in-out"
                       >
                         <SiUdemy />
-                      </Link>
+                      </a>
                     </div>
                   </div>
                 </div>
