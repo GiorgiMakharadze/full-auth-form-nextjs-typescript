@@ -1,3 +1,4 @@
+import Background from "@/components/Backgrounds/Background";
 import RegisterForm from "@/components/forms/Register";
 import Link from "next/link";
 import React from "react";
@@ -24,6 +25,7 @@ const auth = () => {
             <RegisterForm />
           </div>
         </div>
+        <Background image="../../auth/register.jpg" />
       </div>
     </div>
   );

@@ -9,6 +9,8 @@ import { FiLock, FiMail } from "react-icons/fi";
 import { BsTelephone } from "react-icons/bs";
 import zxcvbn from "zxcvbn";
 import validator from "validator";
+import SlideButton from "../buttons/SlideButton";
+import { toast } from "react-toastify";
 
 interface RegisterFormProps {}
 
@@ -33,6 +35,11 @@ const FormSchema = z
       .min(6, "Password must be atleast 6 characters.")
       .max(20, "Password must be less than 20 characters."),
     confrimPassword: z.string(),
+    accept: z.literal(true, {
+      errorMap: () => ({
+        message: "Please agree to all terms and conditions  before continue",
+      }),
+    }),
   })
   .refine((data) => data.password === data.confrimPassword, {
     message: "Password does't match",
@@ -134,7 +141,7 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
         </div>
       )}
       <Input
-        name="conffrimPassword"
+        name="confrimPassword"
         label="Confirm password"
         type="password"
         icon={<FiLock />}
@@ -143,7 +150,46 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
         error={errors?.confrimPassword?.message}
         disabled={isSubmitting}
       />
-      <button type="submit">submit</button>
+      <div className="flex item-center mt-3">
+        <input
+          type="checkbox"
+          id="accept"
+          className="mr-2 focus:ring-0 rounnded"
+          {...register("accept")}
+        />
+
+        <label htmlFor="accept" className="text-gray-700">
+          I accept the&nbsp;{" "}
+          <a
+            href=""
+            target="_blank"
+            className="text-blue-600 hover:text-blue-700 hover:underline"
+          >
+            terms
+          </a>
+          &nbsp;and&nbsp;
+          <a
+            href=""
+            target="_blank"
+            className="text-blue-600 hover:text-blue-700 hover:underline"
+          >
+            privacy policy
+          </a>
+        </label>
+      </div>
+      {errors?.accept && (
+        <p className="text-sm text-red-600 mt-1">{errors?.accept?.message}</p>
+      )}
+      <SlideButton
+        type="submit"
+        text="Sign up"
+        slide_text="Secure sign up"
+        icon={<FiLock />}
+        disabled={isSubmitting}
+      />
+      <button onClick={() => toast.success("this is a success message")}>
+        Toast
+      </button>
     </form>
   );
 };

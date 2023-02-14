@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { IoAlertCircle } from "react-icons/io5";
+import { ImEye, ImEyeBlocked } from "react-icons/im";
 
 interface InputProps {
   name: string;
@@ -14,6 +16,12 @@ interface InputProps {
 const Input: React.FC<InputProps> = (props) => {
   const { name, label, type, icon, placeholder, register, error, disabled } =
     props;
+  const [showPassword, setShowPassword] = useState(false);
+  const calculateTranslate = (): string => {
+    if (name == "first_name" || name == "last_name") return "translateY(-22px)";
+    return "translateY(-12px)";
+  };
+
   return (
     <div className="mt-3 w-[100%]">
       <label htmlFor={name} className="text-gray-700"></label>
@@ -25,7 +33,7 @@ const Input: React.FC<InputProps> = (props) => {
           <span className="text-gray-500 text-sm">{icon}</span>
         </div>
         <input
-          type={type}
+          type={showPassword ? "text" : type}
           placeholder={placeholder}
           className="w-full py-2 pr-7 pl-8 block rounded-md border border-gray-300 outline-offset-2 outline-transparent focus:border-blue-500 focus:ring-blue-700 focus:ring-2 text-sm"
           {...register(name)}
@@ -33,6 +41,16 @@ const Input: React.FC<InputProps> = (props) => {
             borderColor: `${error ? "#ED4337" : ""}`,
           }}
         />
+        {/* {show and hided password} */}
+        {(name == "password" || name == "confrimPassword") && (
+          <div
+            className="absolute top-2.5 right-2 text-xl text-gray-700 cursor-pointer"
+            style={{ right: `${error ? "2rem" : ""}` }}
+            onClick={() => setShowPassword((prev) => !prev)}
+          >
+            {showPassword ? <ImEye /> : <ImEyeBlocked />}
+          </div>
+        )}
         {error && (
           <div className="fill-red-500 absolute right-2 top-2.5 text-xl">
             <IoAlertCircle fill="#ED4337" />
