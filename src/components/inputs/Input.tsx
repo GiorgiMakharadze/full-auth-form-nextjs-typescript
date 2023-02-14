@@ -38,7 +38,7 @@ const Input: React.FC<InputProps> = (props) => {
             <IoAlertCircle fill="#ED4337" />
           </div>
         )}
-        {error && <p className="text-sm text=[#ED4337] mt-1">{error}</p>}
+        {error && <p className="text-sm text-[#ED4337] mt-1">{error}</p>}
       </div>
     </div>
   );
