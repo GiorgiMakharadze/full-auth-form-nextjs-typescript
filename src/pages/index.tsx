@@ -3,7 +3,6 @@ import { useSession, signIn, signOut, getSession } from "next-auth/react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { SiUdemy } from "react-icons/si";
 import { AiFillGithub } from "react-icons/ai";
-import Link from "next/link";
 
 export default function Home() {
   const { data: session } = useSession();
@@ -16,14 +15,14 @@ export default function Home() {
 
   return (
     <>
-      <div className="home bg-black min-h-screen text-white flex items-center justify-center">
+      <div className="home bg-neutral-100 min-h-screen text-white flex items-center justify-center">
         <div className="container mx-auto">
           <div className="border border-white relative flex flex-col w-full rounded-lg">
             <div className="flex flex-wrap justify-center items-center">
               <div className="w-full text-right">
                 <div className="py-6 px-3">
                   <button
-                    className="bg-blue-500 hover:bg-blue-700 text-md uppercase font-bold px-8 py-2 rounded-md sm:mr-2 mb-1 ease-linear transition-all duration-150"
+                    className=" bg-green-500 text-white hover:bg-green-700 text-md uppercase font-bold px-8 py-2 rounded-md sm:mr-2 mb-1 ease-linear transition-all duration-150"
                     onClick={() => signOut()}
                   >
                     Log out
