@@ -1,5 +1,4 @@
 import Background from "@/components/Backgrounds/Background";
-import ForgotForm from "@/components/forms/Forgot";
 import ResetForm from "@/components/forms/Reset";
 import { NextPageContext } from "next";
 

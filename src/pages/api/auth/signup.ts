@@ -1,12 +1,11 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import connectDb from "@/utils/connectDb";
 import User from "@/models/User";
-import bcrypt from "bcryptjs";
+import connectDb from "@/utils/connectDb";
+import type { NextApiRequest, NextApiResponse } from "next";
 import validator from "validator";
+import bcrypt from "bcryptjs";
 import { createActivationToken } from "@/utils/tokens";
 import sendMail from "@/utils/sendMail";
-import { activateTemplateEmail } from "@/components/emailTemplates/activate";
-
+import { activateTemplateEmail } from "@/emailTemplates/activate";
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -57,7 +56,7 @@ export default async function handler(
       newuser.name,
       "",
       url,
-      "Activate your account",
+      "Activate your account - Dev7",
       activateTemplateEmail
     );
     res.json({

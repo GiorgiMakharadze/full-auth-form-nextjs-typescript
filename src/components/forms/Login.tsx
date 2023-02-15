@@ -1,31 +1,28 @@
 import * as React from "react";
-import { useForm } from "react-hook-form";
-import { SubmitHandler } from "react-hook-form/dist/types/form";
-import { useRouter } from "next/router";
-import { signIn } from "next-auth/react";
-import Link from "next/link";
 import Input from "../inputs/Input";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import SlideButton from "../buttons/SlideButton";
 import { FiLock, FiMail } from "react-icons/fi";
+import SlideButton from "../buttons/SlideButton";
+import { SubmitHandler } from "react-hook-form/dist/types/form";
+import { useRouter } from "next/router";
 import { toast } from "react-toastify";
-
+import { signIn } from "next-auth/react";
+import Link from "next/link";
 interface LoginFormProps {
   callbackUrl: string;
   csrfToken: string;
 }
-
 const FormSchema = z.object({
-  email: z.string().email("Please enter valid email address"),
+  email: z.string().email("Please enter a valid email adress."),
   password: z
     .string()
     .min(6, "Password must be atleast 6 characters.")
-    .max(20, "Password must be less than 20 characters."),
+    .max(52, "Password must be less than 52 characters."),
 });
 
 type FormSchemaType = z.infer<typeof FormSchema>;
-
 const LoginForm: React.FC<LoginFormProps> = (props) => {
   const { callbackUrl, csrfToken } = props;
   const router = useRouter();
@@ -37,7 +34,6 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
   } = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
   });
-
   const onSubmit: SubmitHandler<FormSchemaType> = async (values) => {
     const res: any = await signIn("credentials", {
       redirect: false,
@@ -82,10 +78,10 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
         <input type="hidden" name="csrfToken" defaultValue={csrfToken} />
         <Input
           name="email"
-          label="Email Adress"
+          label="Email address"
           type="text"
           icon={<FiMail />}
-          placeholder="example@example.com"
+          placeholder="example@emaple.com"
           register={register}
           error={errors?.email?.message}
           disabled={isSubmitting}
@@ -93,17 +89,17 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 
         <Input
           name="password"
-          label="Phone number"
+          label="Password"
           type="password"
           icon={<FiLock />}
-          placeholder="**********"
+          placeholder="***********"
           register={register}
           error={errors?.password?.message}
           disabled={isSubmitting}
         />
         <div className="mt-2 hover:underline w-fit">
-          <Link href="/forgot" className="mt-2 text-blue-600 ">
-            Forgot password?
+          <Link href="/forgot" className=" text-blue-600">
+            Forgot password ?
           </Link>
         </div>
         <SlideButton

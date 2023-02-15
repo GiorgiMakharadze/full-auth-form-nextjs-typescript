@@ -6,17 +6,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FiLock, FiMail } from "react-icons/fi";
 import SlideButton from "../buttons/SlideButton";
 import { SubmitHandler } from "react-hook-form/dist/types/form";
+import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import axios from "axios";
-interface IForgotFormProps {}
-
+interface ForgotFormProps {}
 const FormSchema = z.object({
   email: z.string().email("Please enter a valid email adress."),
 });
 
 type FormSchemaType = z.infer<typeof FormSchema>;
-const ForgotForm: React.FunctionComponent<IForgotFormProps> = (props) => {
+const ForgotForm: React.FC<ForgotFormProps> = (props) => {
   const {
     register,
     handleSubmit,

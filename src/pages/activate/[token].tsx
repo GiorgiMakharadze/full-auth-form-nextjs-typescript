@@ -3,7 +3,7 @@ import { NextPageContext } from "next";
 import { signIn } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 
-const activate = ({ token }: { token: string }) => {
+export default function Activate({ token }: { token: string }) {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   useEffect(() => {
@@ -17,12 +17,11 @@ const activate = ({ token }: { token: string }) => {
       setError((error?.response?.data as Error).message);
     }
   };
-
   return (
-    <div className="bg-white h-screen flex items-center justify-center text-center">
+    <div className="bg-black h-screen flex items-center justify-center text-center">
       {error && (
         <div>
-          <p className="text-red-500 font-bold">{error}</p>
+          <p className="text-red-500 text-xl font-bold">{error}</p>
           <button
             className="mg-4 bg-green-400 text-white hover:bg-green-500 text-md uppercase font-bold px-8 py-2 rounded-md sm:mr-2 mb-1 ease-linear transition-all duration-150"
             onClick={() => signIn()}
@@ -33,7 +32,7 @@ const activate = ({ token }: { token: string }) => {
       )}
       {success && (
         <div>
-          <p className="text-black-500 font-bold">{success}</p>
+          <p className="text-green-500 text-xl font-bold">{success}</p>
           <button
             className="mg-4 bg-green-400 text-white hover:bg-green-500 text-md uppercase font-bold px-8 py-2 rounded-md sm:mr-2 mb-1 ease-linear transition-all duration-150"
             onClick={() => signIn()}
@@ -44,15 +43,11 @@ const activate = ({ token }: { token: string }) => {
       )}
     </div>
   );
-};
-
-export default activate;
+}
 
 export async function getServerSideProps(ctx: NextPageContext) {
   const { query } = ctx;
   const token = query.token;
-  console.log(token);
-
   return {
     props: { token },
   };
