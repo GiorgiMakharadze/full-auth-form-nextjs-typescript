@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="home bg-neutral-100 min-h-screen text-black flex items-center justify-center">
+      <div className="home bg-white min-h-screen text-black flex items-center justify-center">
         <div className="container mx-auto">
           <div className="border border-black relative flex flex-col w-full rounded-lg">
             <div className="flex flex-wrap justify-center items-center">

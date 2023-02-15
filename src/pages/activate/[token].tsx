@@ -19,7 +19,7 @@ const activate = ({ token }: { token: string }) => {
   };
 
   return (
-    <div className="bg-neutral-100 h-screen flex items-center justify-center text-center">
+    <div className="bg-white h-screen flex items-center justify-center text-center">
       {error && (
         <div>
           <p className="text-red-500 font-bold">{error}</p>

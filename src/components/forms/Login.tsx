@@ -1,14 +1,15 @@
 import * as React from "react";
-import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types/form";
+import { useRouter } from "next/router";
+import { signIn } from "next-auth/react";
+import Link from "next/link";
 import Input from "../inputs/Input";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SlideButton from "../buttons/SlideButton";
 import { FiLock, FiMail } from "react-icons/fi";
 import { toast } from "react-toastify";
-import { signIn } from "next-auth/react";
 
 interface LoginFormProps {
   callbackUrl: string;
@@ -100,7 +101,11 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
           error={errors?.password?.message}
           disabled={isSubmitting}
         />
-
+        <div className="mt-2 hover:underline w-fit">
+          <Link href="/forgot" className="mt-2 text-blue-600 ">
+            Forgot password?
+          </Link>
+        </div>
         <SlideButton
           type="submit"
           text="Sign in"
