@@ -10,7 +10,7 @@ export default function Home() {
   const text2: string =
     "In this build we used React js, Next js, Mongodb, Mongoose, Typecript, Next auth,React-hook-form, Zod,Axios, Nodemailer, Smtp service, Gmail stmp, Axios, React-toastify, Zxcvbn, Handlebars, BcryptJs...";
   return (
-    <div className="home bg-black min-h-screen text-white flex items-center justify-center">
+    <div className="home bg-white min-h-screen text-white flex items-center justify-center">
       <div className="container mx-auto">
         <div className="border border-white relative flex flex-col w-full rounded-lg">
           <div className="flex flex-wrap justify-center items-center">

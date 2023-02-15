@@ -18,7 +18,7 @@ export default function Activate({ token }: { token: string }) {
     }
   };
   return (
-    <div className="bg-black h-screen flex items-center justify-center text-center">
+    <div className="bg-white h-screen flex items-center justify-center text-center">
       {error && (
         <div>
           <p className="text-red-500 text-xl font-bold">{error}</p>
