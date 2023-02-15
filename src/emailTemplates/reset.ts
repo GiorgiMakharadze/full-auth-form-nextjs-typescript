@@ -892,7 +892,7 @@ export const resetPasswordEmail = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 
                                         >
                                           <a
                                             target="_blank"
-                                            href="#"
+                                            href="https://www.linkedin.com/in/giorgi-makharadze-a8100125b/"
                                             style="
                                               -webkit-text-size-adjust: none;
                                               -ms-text-size-adjust: none;
