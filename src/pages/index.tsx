@@ -15,9 +15,9 @@ export default function Home() {
 
   return (
     <>
-      <div className="home bg-neutral-100 min-h-screen text-white flex items-center justify-center">
+      <div className="home bg-neutral-100 min-h-screen text-black flex items-center justify-center">
         <div className="container mx-auto">
-          <div className="border border-white relative flex flex-col w-full rounded-lg">
+          <div className="border border-black relative flex flex-col w-full rounded-lg">
             <div className="flex flex-wrap justify-center items-center">
               <div className="w-full text-right">
                 <div className="py-6 px-3">
@@ -45,7 +45,7 @@ export default function Home() {
                 </div>
                 <div className="mb-2 mt-10">
                   You logged in using &nbsp;
-                  <span className="capitalize bg-blue-400 text-white px-4 py-1 ml-2 font-bold italix text-lg rounded-md">
+                  <span className="capitalize bg-blue-400 text-black px-4 py-1 ml-2 font-bold italix text-lg rounded-md">
                     {session?.user?.provider}
                   </span>
                 </div>

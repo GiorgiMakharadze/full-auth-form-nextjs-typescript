@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 .home {
-  background: #000;
+  background: rgb(245 245 245);
   padding: 0 5px;
 }

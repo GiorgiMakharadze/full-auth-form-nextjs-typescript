@@ -24,7 +24,7 @@ const activate = ({ token }: { token: string }) => {
         <div>
           <p className="text-red-500 font-bold">{error}</p>
           <button
-            className="mg-4 bg-green-500 text-white hover:bg-green-700 text-md uppercase font-bold px-8 py-2 rounded-md sm:mr-2 mb-1 ease-linear transition-all duration-150"
+            className="mg-4 bg-green-400 text-white hover:bg-green-500 text-md uppercase font-bold px-8 py-2 rounded-md sm:mr-2 mb-1 ease-linear transition-all duration-150"
             onClick={() => signIn()}
           >
             Sign in instead
@@ -35,7 +35,7 @@ const activate = ({ token }: { token: string }) => {
         <div>
           <p className="text-black-500 font-bold">{success}</p>
           <button
-            className="mg-4 bg-green-500 text-white hover:bg-green-700 text-md uppercase font-bold px-8 py-2 rounded-md sm:mr-2 mb-1 ease-linear transition-all duration-150"
+            className="mg-4 bg-green-400 text-white hover:bg-green-500 text-md uppercase font-bold px-8 py-2 rounded-md sm:mr-2 mb-1 ease-linear transition-all duration-150"
             onClick={() => signIn()}
           >
             Sign in
